@@ -11,8 +11,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final String url =
-      "https://raw.githubusercontent.com/nitishk72/flutter_json_list/master/json_example.json";
+  final String apiEndpoint =
+      "https://github.com/aizuddin37/movies/blob/main/movies/json_example.json";
+
 
   List<myModel> myAllData = [];
 
@@ -22,13 +23,14 @@ class _MyAppState extends State<MyApp> {
   }
 
   loadData() async {
+    final Uri url = Uri.parse(apiEndpoint);
     var response = await http.get(url, headers: {"Aceept": "application/json"});
     if (response.statusCode == 200) {
       String responeBody = response.body;
       var jsonBody = json.decode(responeBody);
       for (var data in jsonBody) {
         myAllData.add(new myModel(
-            data['title'], data['authorName'], data['categoryName'], data['address']));
+            data['authorId'],data['title'], data['authorName'], data['bookCoverUrl'], data['categoryName'],data['categoryId'],));
       }
       setState(() {});
       myAllData.forEach((someData) => print("Title : ${someData.title}"));

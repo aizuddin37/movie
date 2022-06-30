@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final String apiEndpoint =
-      "https://github.com/aizuddin37/movies/blob/main/movies/json_example.json";
+      "https://github.com/aizuddin37/movie/blob/main/json_example.json";
 
 
   List<myModel> myAllData = [];
